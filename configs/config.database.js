@@ -4,4 +4,7 @@ module.exports = {
   server: "educationsignlanguage.database.windows.net",
   database: "educationSignLanguage",
   trustServerCertificate: true,
+  options: {
+    encrypt: true,
+  },
 };
