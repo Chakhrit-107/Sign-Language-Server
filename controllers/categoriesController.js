@@ -46,7 +46,7 @@ const getCategoriesGames = async (req, res) => {
 // GET All Categories
 const getAllCategories = async (req, res) => {
   try {
-    const request = new sql.Request(sql.pool);
+    const request = new sql.Request();
 
     const query = "SELECT * FROM categories";
     const results = await request.query(query);
