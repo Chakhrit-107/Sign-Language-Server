@@ -1,6 +1,7 @@
 # Ignore configs folder
 /configs
 
+
 # Ignore specific files
 /configs/authentication.js
 /configs/config.api.js
