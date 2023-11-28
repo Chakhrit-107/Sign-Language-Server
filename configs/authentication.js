@@ -1,4 +1,6 @@
+require("dotenv").config();
+
 module.exports = {
-  secretKey: "12345",
-  hashRound: 10,
+  secretKey: process.env.SECRET_KEY,
+  hashRound: process.env.HASH_ROUND,
 };

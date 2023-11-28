@@ -1,6 +1,6 @@
+require("dotenv").config();
+
 module.exports = {
-  URL: "https://sign-language-server.onrender.com",
-  // PROTOCOL: "https",
-  // HOST: "sign-language-server.onrender.com",
-  PORT: "8800",
+  URL: process.env.API_URL,
+  PORT: process.env.API_PORT,
 };

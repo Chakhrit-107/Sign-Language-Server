@@ -1,8 +1,10 @@
+require("dotenv").config();
+
 module.exports = {
-  user: "adminbest",
-  password: "adminB_041244",
-  server: "educationsignlanguage.database.windows.net",
-  database: "educationSignLanguage",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_SERVER,
+  database: process.env.DB_NAME,
   trustServerCertificate: true,
   options: {
     encrypt: true,
