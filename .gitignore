@@ -1,7 +1,3 @@
-# config files
-configs/authentication.js
-configs/config.api.js
-
 # Logs
 logs
 *.log
