@@ -1,5 +1,5 @@
 const sql = require("mssql");
-const { PROTOCOL, HOST, PORT } = require("../../configs/config.api.js");
+const { URL } = require("../../configs/config.api.js");
 const { createCanvas, loadImage } = require("canvas");
 
 // Convert Position
@@ -133,7 +133,7 @@ const convertVocabulariesToMatchingGame = async (vocabularies) => {
     vocabularies.forEach((_, index) => {
       vName.push({ name: nameRandom[index].name, id: nameRandom[index].id });
       vImages.push({
-        image: `${PROTOCOL}://${HOST}:${PORT}/${imagesRandom[index].img_normal}`,
+        image: `${URL}/${imagesRandom[index].img_normal}`,
         nameCorrect: imagesRandom[index].name,
         id: imagesRandom[index].id,
       });

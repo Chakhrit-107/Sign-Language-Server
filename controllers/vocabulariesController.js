@@ -1,14 +1,14 @@
 const sql = require("mssql");
 const fs = require("fs");
-const { PROTOCOL, HOST, PORT } = require("../configs/config.api.js");
+const { URL } = require("../configs/config.api.js");
 
 // Update URL of image Vocabularies
 const updateImageUrls = (vocabularies) => {
   return vocabularies.map((vocabulary) => ({
     ...vocabulary,
-    img_normal: `${PROTOCOL}://${HOST}:${PORT}/${vocabulary.img_normal}`,
-    img_sign_language: `${PROTOCOL}://${HOST}:${PORT}/${vocabulary.img_sign_language}`,
-    video: `${PROTOCOL}://${HOST}:${PORT}/${vocabulary.video}`,
+    img_normal: `${URL}/${vocabulary.img_normal}`,
+    img_sign_language: `${URL}/${vocabulary.img_sign_language}`,
+    video: `${URL}/${vocabulary.video}`,
   }));
 };
 
@@ -69,7 +69,7 @@ const getVocabularyUserInput = async (req, res) => {
   }
 };
 
-// PORT Vocabularies
+// POST Vocabularies
 const createVocabularies = async (req, res) => {
   try {
     const { tableName, vocabulary } = req.body;

@@ -1,5 +1,5 @@
 const sql = require("mssql");
-const { PROTOCOL, HOST, PORT } = require("../../configs/config.api");
+const { URL } = require("../../configs/config.api");
 
 // Create Random Integer
 const createRandomInteger = (max) => {
@@ -74,8 +74,8 @@ const getVocabulariesDifferenceGame = async (req, res) => {
     const answerCorrect = vocabulariesAnswer.map((vocabulary) => {
       return {
         ...vocabulary,
-        img_normal: `${PROTOCOL}://${HOST}:${PORT}/${vocabulary.img_normal}`,
-        img_sign_language: `${PROTOCOL}://${HOST}:${PORT}/${vocabulary.img_sign_language}`,
+        img_normal: `${URL}/${vocabulary.img_normal}`,
+        img_sign_language: `${URL}/${vocabulary.img_sign_language}`,
       };
     });
 
@@ -84,8 +84,8 @@ const getVocabulariesDifferenceGame = async (req, res) => {
     const updateV1 = vRandomSet1.map((vocabulary) => {
       return {
         ...vocabulary,
-        img_normal: `${PROTOCOL}://${HOST}:${PORT}/${vocabulary.img_normal}`,
-        img_sign_language: `${PROTOCOL}://${HOST}:${PORT}/${vocabulary.img_sign_language}`,
+        img_normal: `${URL}/${vocabulary.img_normal}`,
+        img_sign_language: `${URL}/${vocabulary.img_sign_language}`,
       };
     });
 
@@ -94,8 +94,8 @@ const getVocabulariesDifferenceGame = async (req, res) => {
     const updateV2 = vRandomSet2.map((vocabulary) => {
       return {
         ...vocabulary,
-        img_normal: `${PROTOCOL}://${HOST}:${PORT}/${vocabulary.img_normal}`,
-        img_sign_language: `${PROTOCOL}://${HOST}:${PORT}/${vocabulary.img_sign_language}`,
+        img_normal: `${URL}/${vocabulary.img_normal}`,
+        img_sign_language: `${URL}/${vocabulary.img_sign_language}`,
       };
     });
 

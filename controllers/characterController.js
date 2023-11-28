@@ -1,6 +1,6 @@
 const sql = require("mssql");
 
-const { PROTOCOL, HOST, PORT } = require("../configs/config.api.js");
+const { URL } = require("../configs/config.api.js");
 
 // GET Character
 const getCharacter = async (req, res) => {
@@ -20,7 +20,7 @@ const getCharacter = async (req, res) => {
     const innerCharacter = character.flat();
     const updateCharacter = innerCharacter.map((character) => ({
       ...character,
-      character_img: `${PROTOCOL}://${HOST}:${PORT}/${character.character_img}`,
+      character_img: `${URL}/${character.character_img}`,
     }));
 
     return res.json(updateCharacter);

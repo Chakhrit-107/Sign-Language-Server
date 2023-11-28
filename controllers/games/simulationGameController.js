@@ -1,5 +1,5 @@
 const sql = require("mssql");
-const { PROTOCOL, HOST, PORT } = require("../../configs/config.api");
+const { URL } = require("../../configs/config.api");
 
 // Random 3 Number Not redundant
 const getRandomNumber = (count, maxNumber) => {
@@ -19,13 +19,13 @@ const getRandomNumber = (count, maxNumber) => {
 const updateImageVideoUrls = (questions) => {
   return questions.map((quiz) => ({
     ...quiz,
-    question: `${PROTOCOL}://${HOST}:${PORT}/${quiz.question}`,
+    question: `${URL}/${quiz.question}`,
     answer_A: `${quiz.answer_A}`,
-    image_A: `${PROTOCOL}://${HOST}:${PORT}/${quiz.image_A}`,
-    image_sign_A: `${PROTOCOL}://${HOST}:${PORT}/${quiz.image_sign_A}`,
+    image_A: `${URL}/${quiz.image_A}`,
+    image_sign_A: `${URL}/${quiz.image_sign_A}`,
     answer_B: `${quiz.answer_B}`,
-    image_B: `${PROTOCOL}://${HOST}:${PORT}/${quiz.image_B}`,
-    image_sign_B: `${PROTOCOL}://${HOST}:${PORT}/${quiz.image_sign_B}`,
+    image_B: `${URL}/${quiz.image_B}`,
+    image_sign_B: `${URL}/${quiz.image_sign_B}`,
   }));
 };
 

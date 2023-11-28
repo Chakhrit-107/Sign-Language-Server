@@ -1,13 +1,13 @@
 const sql = require("mssql");
 const fs = require("fs");
-const { PROTOCOL, HOST, PORT } = require("../configs/config.api.js");
+const { URL } = require("../configs/config.api.js");
 
 // Update URL of image Categories
 const updateImageUrls = (categories) => {
   return categories.map((category) => ({
     ...category,
-    img_normal: `${PROTOCOL}://${HOST}:${PORT}/${category.img_normal}`,
-    img_sign_language: `${PROTOCOL}://${HOST}:${PORT}/${category.img_sign_language}`,
+    img_normal: `${URL}/${category.img_normal}`,
+    img_sign_language: `${URL}/${category.img_sign_language}`,
   }));
 };
 
