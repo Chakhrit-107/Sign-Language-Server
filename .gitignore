@@ -1,3 +1,12 @@
+# Ignore configs folder
+/configs
+
+# Ignore specific files
+/configs/authentication.js
+/configs/config.api.js
+/configs/config.database.js
+
+
 # Logs
 logs
 *.log
