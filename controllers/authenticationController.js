@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const authenticationKey = require("../configs/authentication.js");
 
 const secretKey = authenticationKey.secretKey;
-const hashRound = authenticationKey.hashRound;
+const hashRound = 10;
 
 const registerController = async (req, res) => {
   try {
