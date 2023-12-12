@@ -13,9 +13,16 @@ const authenticationRouter = require("./routes/authentication.js");
 
 const app = express();
 
-sql.connect(configDB, (err) => {
-  if (err) console.log(err);
-});
+const connectDB = async () => {
+  try {
+    await sql.connect(configDB);
+    console.log("Connected to the database");
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+connectDB();
 
 app.use(cors());
 app.use(express.json());
