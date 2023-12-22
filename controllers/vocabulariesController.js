@@ -57,6 +57,7 @@ const getVocabularyUserInput = async (req, res) => {
 
       if (vocabularyFind.recordset.length > 0) {
         vocabularyFound.push(vocabularyFind.recordset[0]);
+        break;
       }
     }
 

@@ -8,5 +8,7 @@ module.exports = {
   trustServerCertificate: true,
   options: {
     encrypt: true,
+    connectionTimeout: 15000,
+    requestTimeout: 15000,
   },
 };
