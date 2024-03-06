@@ -131,10 +131,15 @@ const convertVocabulariesToMatchingGame = async (vocabularies) => {
 
     // get images and name random
     vocabularies.forEach((_, index) => {
-      vName.push({ name: nameRandom[index].name, id: nameRandom[index].id });
+      vName.push({
+        image: `${URL}/${nameRandom[index].img_normal}`,
+        name: nameRandom[index].name,
+        id: nameRandom[index].id,
+      });
+
       vImages.push({
         image: `${URL}/${imagesRandom[index].img_normal}`,
-        nameCorrect: imagesRandom[index].name,
+        name: imagesRandom[index].name,
         id: imagesRandom[index].id,
       });
     });
