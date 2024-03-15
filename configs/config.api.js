@@ -2,5 +2,5 @@ require("dotenv").config();
 
 module.exports = {
   URL: process.env.API_URL,
-  PORT: 8800,
+  PORT: 8080,
 };
