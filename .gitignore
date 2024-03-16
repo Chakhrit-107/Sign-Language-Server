@@ -1,5 +1,6 @@
 # Ignore configs folder
 /configs
+/node_modules
 
 # Ignore specific files
 /configs/authentication.js
