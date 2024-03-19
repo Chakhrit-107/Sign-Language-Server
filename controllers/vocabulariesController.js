@@ -44,8 +44,7 @@ const getVocabularyUserInput = async (req, res) => {
       return category.categories_name;
     });
 
-    const vocabularyFound = [];
-    for (const category of categoryName) {
+    const searchPromises = categoryName.map(async (category) => {
       const queryInputUser = `SELECT *
                               FROM (
                                   SELECT id, name, img_normal, img_sign_language, video
@@ -56,12 +55,18 @@ const getVocabularyUserInput = async (req, res) => {
       const vocabularyFind = await request.query(queryInputUser);
 
       if (vocabularyFind.recordset.length > 0) {
-        vocabularyFound.push(vocabularyFind.recordset[0]);
-        break;
+        return vocabularyFind.recordset[0];
       }
-    }
+      return null;
+    });
 
-    const updatedUrls = updateImageUrls(vocabularyFound);
+    const vocabularyFound = await Promise.all(searchPromises);
+
+    const filteredVocabularies = vocabularyFound.filter(
+      (vocabulary) => vocabulary !== null
+    );
+
+    const updatedUrls = updateImageUrls(filteredVocabularies);
 
     return res.json(updatedUrls);
   } catch (err) {

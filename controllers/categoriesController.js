@@ -15,26 +15,31 @@ const updateImageUrls = (categories) => {
 const getCategoriesGames = async (req, res) => {
   try {
     const vMinimum = req.params.vMinimum;
-
     const request = new sql.Request();
 
     const queryCategories = "SELECT * FROM categories";
     const resultsCategories = await request.query(queryCategories);
     const categories = resultsCategories.recordset;
 
-    const categoryData = [];
-    for (const category of categories) {
+    const searchPromises = categories.map(async (category) => {
       const tableName = category.categories_name;
       const rowCountQuery = `SELECT COUNT(*) AS count FROM ${tableName}`;
       const rowCountResult = await request.query(rowCountQuery);
       const rowCount = rowCountResult.recordset[0].count;
 
       if (rowCount >= vMinimum) {
-        categoryData.push(category);
+        return category;
       }
-    }
+      return null;
+    });
 
-    const updatedUrls = updateImageUrls(categoryData);
+    const categoryData = await Promise.all(searchPromises);
+
+    const filteredCategories = categoryData.filter(
+      (category) => category !== null
+    );
+
+    const updatedUrls = updateImageUrls(filteredCategories);
 
     return res.json(updatedUrls);
   } catch (err) {
